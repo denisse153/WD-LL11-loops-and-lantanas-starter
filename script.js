@@ -6,6 +6,18 @@ function addStations(stations) {
   }
 }
 
+function addStations(stations) {
+  stations.forEach(station => {
+    addStationElement(station);
+  });
+
+
+const mapFunc = function addStations(stations) {
+  
+}
+
+
+
 // 🧪 TEAM FEATURES
 
 // 💌 Wishlist Renderer
@@ -26,7 +38,21 @@ function pickFeaturedStation() {
 
 // 🏙️ Group by City
 function groupStationsByCity() {
-  // TODO: Loop through stations and group under each city
+  // Group stations by city
+  const grouped = stations.reduce((acc, station) => {
+    if (!acc[station.city]) acc[station.city] = [];
+    acc[station.city].push(station);
+    return acc;
+  }, {});
+  // Clear current list
+  document.getElementById("station-list").innerHTML = "";
+  // Render stations grouped by city
+  Object.keys(grouped).forEach(city => {
+    const cityHeader = document.createElement("h2");
+    cityHeader.textContent = city;
+    document.getElementById("station-list").appendChild(cityHeader);
+    grouped[city].forEach(station => addStationElement(station));
+  });
 }
 
 // 🔄 Filter Toggle

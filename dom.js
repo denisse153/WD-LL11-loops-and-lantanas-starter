@@ -6,7 +6,7 @@ function addStationElement(station) {
       <h3>${station.name}</h3>
       <p><strong>Location:</strong> ${station.location}</p>
       <p><strong>Type:</strong> ${station.type}</p>
+      <p><strong>City:</strong> ${station.location}</p>
     `;
     list.appendChild(div);
   }
-  
